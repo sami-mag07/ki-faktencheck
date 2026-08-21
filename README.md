@@ -51,6 +51,20 @@ python3 faktencheck.py antwort.md
 
 Nach 1 bis 5 Minuten liegt `antwort.bericht.md` daneben.
 
+## Als Claude-Skill nutzen
+
+Wer mit Claude (Code, Desktop oder Cowork) arbeitet, braucht das Skript nicht:
+Die `SKILL.md` aus diesem Repo in den eigenen Skill-Ordner kopieren
+(z.B. `~/.claude/skills/faktencheck/SKILL.md`), dann genügt im Chat ein
+"prüf das auf Halluzinationen" und Claude prüft nach denselben Regeln,
+mit Websuche und Quellenpflicht.
+
+## Verwandte Projekte
+
+- [fact-check-skill](https://github.com/FuturizeRush/fact-check-skill): Claim-Verifikation für technische Texte
+- [claude-skill-citation-checker](https://github.com/PHY041/claude-skill-citation-checker): prüft Literaturverzeichnisse gegen CrossRef, Semantic Scholar und OpenAlex
+- [anthropic-anti-hallucinate-skills](https://github.com/instantX-research/anthropic-anti-hallucinate-skills): Verhaltensregeln gegen Halluzinationen
+
 ## Grenzen
 
 Auch der Prüfer ist eine KI. Er arbeitet mit echter Websuche und darf ohne
