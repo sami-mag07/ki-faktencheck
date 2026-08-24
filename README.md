@@ -1,74 +1,74 @@
 # KI-Faktencheck
 
-Prüft eine KI-Antwort Behauptung für Behauptung per Websuche und schreibt einen
-Bericht mit Quellen und einer korrigierten Fassung.
+Checks an AI answer claim by claim via web search and writes a
+report with sources and a corrected version.
 
-Gedacht für Lehrkräfte: Wenn ChatGPT, Claude oder Gemini euch einen Text
-geschrieben hat, lasst dieses Werkzeug einmal drüberlaufen, bevor ihr ihn
-verwendet. KI-Modelle halluzinieren, sie erfinden Zahlen, Daten, Namen und
-Quellen und klingen dabei völlig sicher. Dieses Werkzeug nutzt eine zweite KI
-mit echter Websuche, die jede prüfbare Behauptung gegen Quellen abgleicht.
+Made for teachers: if ChatGPT, Claude, or Gemini wrote a text for you,
+run this tool over it once before you use it. AI models hallucinate:
+they invent numbers, dates, names, and sources while sounding completely
+confident. This tool uses a second AI with real web search that checks
+every verifiable claim against sources.
 
-## Was rauskommt
+## What you get
 
-Aus `meine-ki-antwort.md` wird `meine-ki-antwort.bericht.md` mit:
+From `meine-ki-antwort.md` you get `meine-ki-antwort.bericht.md` with:
 
-1. **Kurzfazit**: wie viele Behauptungen geprüft, bestätigt, widerlegt
-2. **Einzelprüfung**: Tabelle mit Urteil und Quellen-URL pro Behauptung
-3. **Korrigierte Fassung**: der Text mit belegten Richtigstellungen
-4. **Quellenliste**: alle verwendeten URLs zum Selbst-Nachlesen
+1. **Summary**: how many claims were checked, confirmed, refuted
+2. **Individual checks**: a table with a verdict and source URL per claim
+3. **Corrected version**: the text with sourced corrections
+4. **Source list**: all URLs used, so you can read them yourself
 
-Urteile gibt es nur mit konkreter Quelle. Was sich nicht belegen lässt, heißt
-ehrlich "Nicht belegbar", nicht "stimmt schon".
+Verdicts are only given with a concrete source. Anything that cannot be
+backed up is honestly labeled "Not verifiable", not "probably fine".
 
-## Einrichtung (einmalig, 5 Minuten)
+## Setup (one time, 5 minutes)
 
-1. Python 3 installieren, falls nicht vorhanden (auf dem Mac schon dabei)
-2. Im Terminal:
+1. Install Python 3 if you don't have it (already included on the Mac)
+2. In the terminal:
 
 ```
 pip install anthropic
 ```
 
-3. API-Key holen auf [console.anthropic.com](https://console.anthropic.com)
-   (Guthaben aufladen, eine Prüfung kostet je nach Textlänge etwa 10 bis 50 Cent)
-4. Die Datei `.env.example` zu `.env` kopieren und den Key eintragen:
+3. Get an API key at [console.anthropic.com](https://console.anthropic.com)
+   (add credit; one check costs about 10 to 50 cents depending on text length)
+4. Copy the file `.env.example` to `.env` and enter the key:
 
 ```
 cp .env.example .env
 ```
 
-Der Key bleibt in der `.env` auf eurem Rechner. Niemals den Key selbst in
-Dateien schreiben, die ihr weitergebt oder hochladet.
+The key stays in the `.env` on your machine. Never write the key itself
+into files you share or upload.
 
-## Benutzung
+## Usage
 
-KI-Antwort als Textdatei speichern (z.B. `antwort.md`), dann:
+Save the AI answer as a text file (e.g. `antwort.md`), then:
 
 ```
 python3 faktencheck.py antwort.md
 ```
 
-Nach 1 bis 5 Minuten liegt `antwort.bericht.md` daneben.
+After 1 to 5 minutes, `antwort.bericht.md` appears next to it.
 
-## Als Claude-Skill nutzen
+## Use as a Claude skill
 
-Wer mit Claude (Code, Desktop oder Cowork) arbeitet, braucht das Skript nicht:
-Die `SKILL.md` aus diesem Repo in den eigenen Skill-Ordner kopieren
-(z.B. `~/.claude/skills/faktencheck/SKILL.md`), dann genügt im Chat ein
-"prüf das auf Halluzinationen" und Claude prüft nach denselben Regeln,
-mit Websuche und Quellenpflicht.
+If you work with Claude (Code, Desktop, or Cowork), you don't need the script:
+copy the `SKILL.md` from this repo into your own skills folder
+(e.g. `~/.claude/skills/faktencheck/SKILL.md`), then a simple
+"check this for hallucinations" in the chat is enough and Claude checks
+by the same rules, with web search and mandatory sources.
 
-## Verwandte Projekte
+## Related projects
 
-- [fact-check-skill](https://github.com/FuturizeRush/fact-check-skill): Claim-Verifikation für technische Texte
-- [claude-skill-citation-checker](https://github.com/PHY041/claude-skill-citation-checker): prüft Literaturverzeichnisse gegen CrossRef, Semantic Scholar und OpenAlex
-- [anthropic-anti-hallucinate-skills](https://github.com/instantX-research/anthropic-anti-hallucinate-skills): Verhaltensregeln gegen Halluzinationen
+- [fact-check-skill](https://github.com/FuturizeRush/fact-check-skill): claim verification for technical texts
+- [claude-skill-citation-checker](https://github.com/PHY041/claude-skill-citation-checker): checks bibliographies against CrossRef, Semantic Scholar, and OpenAlex
+- [anthropic-anti-hallucinate-skills](https://github.com/instantX-research/anthropic-anti-hallucinate-skills): behavioral rules against hallucinations
 
-## Grenzen
+## Limits
 
-Auch der Prüfer ist eine KI. Er arbeitet mit echter Websuche und darf ohne
-Quelle kein Urteil fällen, das macht ihn deutlich zuverlässiger als die
-ungeprüfte Erstantwort, aber nicht unfehlbar. Bei allem, was Konsequenzen hat
-(Noten, Elternbriefe, Rechtliches), die verlinkten Quellen selbst öffnen. Der
-Bericht ist eine Vorprüfung, kein Ersatz für den eigenen Blick.
+The checker is an AI too. It works with real web search and is not allowed
+to give a verdict without a source, which makes it far more reliable than the
+unchecked first answer, but not infallible. For anything with consequences
+(grades, letters to parents, legal matters), open the linked sources yourself.
+The report is a preliminary check, not a substitute for your own judgment.
